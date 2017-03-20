@@ -8,4 +8,5 @@ RUN apt-get update && apt-get install -y \
   net-tools \
   tcpdump \
   dstat \
+  dnsutils \
   && rm -rf /var/lib/apt/lists/*
