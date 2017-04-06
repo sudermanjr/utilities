@@ -10,4 +10,5 @@ RUN apt-get update && apt-get install -y \
   dstat \
   dnsutils \
   mysql-client \
+  vim \
   && rm -rf /var/lib/apt/lists/*
