@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
   git \
   net-tools \
   tcpdump \
+  traceroute \
   dstat \
   dnsutils \
   mysql-client \
