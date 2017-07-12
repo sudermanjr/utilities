@@ -1,6 +1,6 @@
 FROM alpine:latest 
 
-ENV HOME=/config
+ENV HOME=/
 ENV KUBE_VERSION="1.5.2"
 ENV KOPS_VERISON="1.6.1"
 ENV HELM_VERSION="2.5.0"
