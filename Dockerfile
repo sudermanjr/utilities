@@ -1,24 +1,24 @@
-FROM debian:stretch
+FROM alpine:latest 
 
 ENV HOME=/config
 ENV KUBE_VERSION="1.5.2"
 ENV KOPS_VERISON="1.6.1"
 ENV HELM_VERSION="2.5.0"
 
-RUN apt-get update && apt-get install -y \
+RUN apk add --update \
   wget \
   curl \
   postgresql-client \
   git \
   net-tools \
   tcpdump \
-  traceroute \
-  dstat \
-  dnsutils \
+  iputils \
+  bind-tools \
   mysql-client \
   vim \
   jq \
-  && rm -rf /var/lib/apt/lists/*
+  bash \
+  bash-completion 
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v$KUBE_VERSION/bin/linux/amd64/kubectl \
