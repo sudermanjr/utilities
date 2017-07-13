@@ -11,6 +11,7 @@ RUN apk add --update \
   postgresql-client \
   git \
   net-tools \
+  nmap \
   tcpdump \
   iputils \
   bind-tools \
