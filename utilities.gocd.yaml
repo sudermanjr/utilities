@@ -1,0 +1,44 @@
+#ci.gocd.yaml
+environments:
+  sudermanjr:
+    environment_variables:
+      DEPLOYMENT: testing
+pipelines:
+  utilities: # definition of mypipe1 pipeline
+    group: sudermanjr # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${mygit[:8]}"
+    locking: off
+    materials:
+      mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        git: git@github.com:sudermanjr/utilities.git 
+        branch: master
+    stages: # list of stages in order
+      - build: # name of stage
+          clean_workspace: true
+          jobs:
+            docker_container: # name of the job
+              resources:
+               - docker
+              artifacts:
+               - build:
+                   source: bin/
+                   destination: build
+               - test:
+                   source: tests/
+                   destination: test-reports/
+              tabs:
+                report: test-reports/index.html
+              tasks: # ordered list of tasks to execute in job csharp
+               - build:
+                   command: docker
+                   arguments:
+                    - "build"
+                    - "-t"
+                    - "artifactory.ecovate.com/sudermanjr/utilities:latest"
+                    - "."
+               - push: 
+                   command: docker
+                   arguments:
+                    - "push"
+                    - "artifactory.ecovate.com/sudermanjr/utilities:latest"
