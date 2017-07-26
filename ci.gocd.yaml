@@ -22,13 +22,6 @@ pipelines:
             docker_container: # name of the job
               resources:
                - docker
-              artifacts:
-               - build:
-                   source: bin/
-                   destination: build
-               - test:
-                   source: tests/
-                   destination: test-reports/
               tabs:
                 report: test-reports/index.html
               tasks: # ordered list of tasks to execute in job csharp
