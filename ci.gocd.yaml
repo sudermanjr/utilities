@@ -3,6 +3,8 @@ environments:
   sudermanjr:
     environment_variables:
       DEPLOYMENT: testing
+    pipelines:
+      - utilities
 pipelines:
   utilities: # definition of mypipe1 pipeline
     group: sudermanjr # note that the group name can contain only of alphanumeric & underscore characters
