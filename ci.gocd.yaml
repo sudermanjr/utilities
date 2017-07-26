@@ -8,7 +8,7 @@ environments:
 pipelines:
   utilities: # definition of mypipe1 pipeline
     group: sudermanjr # note that the group name can contain only of alphanumeric & underscore characters
-    label_template: "${mygit[:8]}"
+    label_template: "1.0.${COUNT}-${mygit[:8]}"
     locking: off
     materials:
       mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
@@ -22,8 +22,6 @@ pipelines:
             docker_container: # name of the job
               resources:
                - docker
-              tabs:
-                report: test-reports/index.html
               tasks: # ordered list of tasks to execute in job csharp
                - exec:
                    command: docker
