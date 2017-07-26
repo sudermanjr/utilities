@@ -30,14 +30,14 @@ pipelines:
               tabs:
                 report: test-reports/index.html
               tasks: # ordered list of tasks to execute in job csharp
-               - build:
+               - exec:
                    command: docker
                    arguments:
                     - "build"
                     - "-t"
                     - "artifactory.ecovate.com/sudermanjr/utilities:latest"
                     - "."
-               - push: 
+               - exec: 
                    command: docker
                    arguments:
                     - "push"
