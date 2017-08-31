@@ -6,7 +6,6 @@ ENV HELM_VERSION="2.6.0"
 ENV VAULT_VERSION="0.8.1"
 
 RUN apk add --update \
-  wget \
   curl \
   postgresql-client \
   git \
