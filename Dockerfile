@@ -43,7 +43,7 @@ RUN curl -LO https://kubernetes-helm.storage.googleapis.com/helm-v$HELM_VERSION-
   && rm -rf linux-amd64 \
 
 # Install vault
-RUN curl -LO https://releases.hashicorp.com/vault/0.8.1/vault_$VAULT_VERSION_linux_amd64.zip
+RUN curl -LO https://releases.hashicorp.com/vault/0.8.1/vault_$VAULT_VERSION_linux_amd64.zip \
   && unzip vault_$VAULT_VERSION_linux_amd64.zip \
   && rm vault_$VAULT_VERSION_linux_amd64.zip \
   && chmod +x vault \
