@@ -47,5 +47,4 @@ RUN curl -LO https://releases.hashicorp.com/vault/0.8.1/vault_$VAULT_VERSION_lin
   && unzip vault_$VAULT_VERSION_linux_amd64.zip \
   && rm vault_$VAULT_VERSION_linux_amd64.zip \
   && chmod +x vault \
-  && mv vault /usr/local/bin/vault \
-  && rm -rf linux-amd64 \
+  && mv vault /usr/local/bin/vault
