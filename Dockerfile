@@ -1,9 +1,9 @@
 FROM alpine:latest 
 
 ENV HOME=/
-ENV KUBE_VERSION="1.5.2"
-ENV KOPS_VERISON="1.6.1"
-ENV HELM_VERSION="2.5.0"
+ENV KUBE_VERSION="1.9.2"
+ENV KOPS_VERSION="1.7.2"
+ENV HELM_VERSION="2.7.2"
 
 RUN apk add --update \
   wget \
@@ -29,7 +29,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v$KUBE_VE
       && kubectl version --client
 
 # Install kops
-RUN curl -LO https://github.com/kubernetes/kops/releases/download/$KOPS_VERISON/kops-linux-amd64 \
+RUN curl -LO https://github.com/kubernetes/kops/releases/download/$KOPS_VERSION/kops-linux-amd64 \
     && chmod +x kops-linux-amd64 \
     && mv kops-linux-amd64 /usr/local/bin/kops \
     && kops version
