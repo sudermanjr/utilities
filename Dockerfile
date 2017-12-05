@@ -1,4 +1,4 @@
-FROM alpine:latest 
+FROM alpine:latest
 
 ENV HOME=/
 ENV KUBE_VERSION="1.9.2"
@@ -6,7 +6,6 @@ ENV KOPS_VERSION="1.7.2"
 ENV HELM_VERSION="2.7.2"
 
 RUN apk add --update \
-  wget \
   curl \
   postgresql-client \
   git \
@@ -19,10 +18,10 @@ RUN apk add --update \
   vim \
   jq \
   bash \
-  bash-completion 
+  bash-completion
 
 # Install kubectl
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v$KUBE_VERSION/bin/linux/amd64/kubectl \
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
       && chmod +x ./kubectl \
       && mv ./kubectl /usr/local/bin/kubectl \
       # Basic check it works.
@@ -40,4 +39,11 @@ RUN curl -LO https://kubernetes-helm.storage.googleapis.com/helm-v$HELM_VERSION-
   && rm helm-v$HELM_VERSION-linux-amd64.tar.gz \
   && chmod +x linux-amd64/helm \
   && mv linux-amd64/helm /usr/local/bin/helm \
-  && rm -rf linux-amd64 \
+  && rm -rf linux-amd64
+
+# Install vault
+RUN curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
+  && unzip vault_${VAULT_VERSION}_linux_amd64.zip \
+  && rm vault_${VAULT_VERSION}_linux_amd64.zip \
+  && chmod +x vault \
+  && mv vault /usr/local/bin/vault
