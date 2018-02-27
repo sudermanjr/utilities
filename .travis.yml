@@ -4,11 +4,12 @@ env:
   - IMAGE_NAME=sudermanjr/utilities
   - COMMIT=${TRAVIS_COMMIT::7}
   - MAJ_VERSION="2.0"
-addons:
-  apt:
-    packages:
-      - docker-ce  
 before_script:
+  - sudo apt-get update
+  - sudo apt-get remove docker docker-engine docker.io
+  - sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-edge
   - docker version
   - sudo cat /proc/sys/fs/binfmt_misc/status
   - update-binfmts --display
