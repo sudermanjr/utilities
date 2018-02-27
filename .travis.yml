@@ -16,7 +16,7 @@ before_script:
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
   - mkdir -p ~/.docker
   - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
-  - echo '{"experimental":true}' | tee ~/.docker/config.json
+  - echo '{"experimental":"enabled"}' | tee ~/.docker/config.json
   - sudo cat /etc/docker/daemon.json | jq .
   - cat ~/.docker/config.json | jq .
   - sudo service docker restart
