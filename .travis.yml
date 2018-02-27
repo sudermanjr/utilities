@@ -14,6 +14,7 @@ before_script:
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable edge"
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - mkdir -p ~/.docker
   - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
   - echo '{"experimental":true}' | tee ~/.docker/config.json
   - sudo cat /etc/docker/daemon.json | jq .
