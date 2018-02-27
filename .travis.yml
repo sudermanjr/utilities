@@ -17,9 +17,9 @@ before_script:
   - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
   - sudo cat /etc/docker/daemon.json
   - sudo service docker restart
+  - cat ~/.docker/config.json  | jq .experimental
+  - docker version
 script:
-- docker version
-- docker version -f '{{.Server.Experimental}}'
 - docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
 - docker images
 - docker manifest inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT -v 
