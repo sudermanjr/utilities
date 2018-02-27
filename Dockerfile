@@ -1,8 +1,7 @@
 FROM alpine:latest
 
 ENV HOME=/
-ENV HELM_VERSION="2.7.2"
-ENV VAULT_VERSION="0.9.0"
+ENV VAULT_VERSION="0.9.5"
 
 RUN apk add --update \
   curl \
@@ -35,15 +34,12 @@ RUN curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s http
     && kops version
 
 # Install helm
-RUN curl -LO https://kubernetes-helm.storage.googleapis.com/helm-v$HELM_VERSION-linux-amd64.tar.gz \
-  && tar -zxvf helm-v$HELM_VERSION-linux-amd64.tar.gz \
-  && rm helm-v$HELM_VERSION-linux-amd64.tar.gz \
-  && chmod +x linux-amd64/helm \
-  && mv linux-amd64/helm /usr/local/bin/helm \
-  && rm -rf linux-amd64
+RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+RUN chmod 700 get_helm.sh
+RUN ./get_helm.sh
+RUN helm version --client
 
 # Install vault
-# https://releases.hashicorp.com/vault/0.9.0/vault_0.9.0_linux_amd64.zip
 RUN curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
   && unzip vault_${VAULT_VERSION}_linux_amd64.zip \
   && rm vault_${VAULT_VERSION}_linux_amd64.zip \
