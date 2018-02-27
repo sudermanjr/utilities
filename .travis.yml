@@ -1,0 +1,21 @@
+language: python
+python:
+- '3.3'
+- pypy
+env:
+  global:
+  - IMAGE_NAME=sudermanjr/utilities
+  - COMMIT=${TRAVIS_COMMIT::7}
+  - MAJ_VERSION="2.0"
+before_script:
+  - sudo cat /proc/sys/fs/binfmt_misc/status
+  - update-binfmts --display
+  - echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:' | sudo tee -a /proc/sys/fs/binfmt_misc/register
+install: true
+script:
+- docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
+- docker images
+#after_success:
+#- docker login -u="DOCKER_USERNAME" -p="DOCKER_PASSWORD"
+#- docker manifest create $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT \
+#- docker images 
