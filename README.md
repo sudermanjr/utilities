@@ -27,6 +27,7 @@ bash
 bash-completion
 iptables
 openssh-client
+openssl
 
 ## Kubernetes
 
