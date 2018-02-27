@@ -21,6 +21,7 @@ before_script:
   - cat ~/.docker/config.json | jq .
   - sudo service docker restart
   - docker version
+  - uname -a
 script:
 - docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
 - docker images
