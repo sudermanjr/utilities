@@ -12,6 +12,7 @@ install: true
 script:
 - docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
 - docker images
+- docker manifest inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT -v 
 #after_success:
 #- docker login -u="DOCKER_USERNAME" -p="DOCKER_PASSWORD"
 #- docker manifest create $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT \
