@@ -28,3 +28,5 @@ script:
 #- docker login -u="DOCKER_USERNAME" -p="DOCKER_PASSWORD"
 #- docker manifest create $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT \
 #- docker images 
+notifications:
+  email: false
