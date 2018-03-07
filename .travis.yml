@@ -25,7 +25,7 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 - docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
 - docker images
-- docker inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT -v
+- docker inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
 #after_success:
 #- docker login -u="DOCKER_USERNAME" -p="DOCKER_PASSWORD"
 #- docker manifest create $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT \
