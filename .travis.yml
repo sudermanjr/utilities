@@ -28,15 +28,8 @@ before_script:
   - cat ~/.docker/config.json | jq .
   - sudo service docker restart
   - docker version
-  - docker run --rm --privileged multiarch/qemu-user-static:register
-  - uname -a
 script:
-# prepare qemu
 - sudo ./build.sh -a "$ARCH" -v "$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT" -q "$QEMU_ARCH" -u "$QEMU_VER" -d "$IMAGE_NAME" -t "$TAG_ARCH"
 - docker images
-#after_success:
-#- docker login -u="DOCKER_USERNAME" -p="DOCKER_PASSWORD"
-#- docker manifest create $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT \
-#- docker images
 notifications:
   email: false

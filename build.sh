@@ -24,6 +24,8 @@ shift $((OPTIND-1))
 
 [ "$1" = "--" ] && shift
 
+docker run --rm --privileged multiarch/qemu-user-static:register --reset
+
 # install qemu-user-static
 if [ -n "${QEMU_ARCH}" ]; then
     if [ ! -f x86_64_qemu-${QEMU_ARCH}-static.tar.gz ]; then
@@ -31,9 +33,6 @@ if [ -n "${QEMU_ARCH}" ]; then
     fi
     tar -xvf x86_64_qemu-${QEMU_ARCH}-static.tar.gz -C $ROOTFS/usr/bin/
 fi
-
-TMP=tmp
-ROOTFS=rootfs
 
 # add qemu-user-static binary
 if [ -n "${QEMU_ARCH}" ]; then
