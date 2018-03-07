@@ -11,7 +11,7 @@ before_script:
   - sudo rm /etc/apt/sources.list.d/docker.list
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable edge"
   - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce qemu-user-static
   - mkdir -p ~/.docker
   - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
   - echo '{"experimental":"enabled"}' | tee ~/.docker/config.json
@@ -19,10 +19,10 @@ before_script:
   - cat ~/.docker/config.json | jq .
   - sudo service docker restart
   - docker version
+  - docker run --rm --privileged multiarch/qemu-user-static:register
   - uname -a
 script:
 # prepare qemu
-- docker run --rm --privileged multiarch/qemu-user-static:register
 - docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
 - docker images
 - docker inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
