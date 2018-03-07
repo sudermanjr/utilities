@@ -4,6 +4,15 @@ env:
   - IMAGE_NAME=sudermanjr/utilities
   - COMMIT=${TRAVIS_COMMIT::7}
   - MAJ_VERSION="2.0"
+  - QEMU_VER=v2.11.0
+
+  matrix:
+    - ARCH=x86      VERSION=v3.4    QEMU_ARCH=i386      TAG_ARCH=x86
+    - ARCH=x86_64   VERSION=v3.4    QEMU_ARCH=x86_64    TAG_ARCH=x86_64
+    - ARCH=x86      VERSION=v3.4    QEMU_ARCH=i386      TAG_ARCH=i386
+    - ARCH=x86_64   VERSION=v3.4    QEMU_ARCH=x86_64    TAG_ARCH=amd64
+    - ARCH=armhf    VERSION=v3.4    QEMU_ARCH=arm       TAG_ARCH=armhf
+  
 before_script:
   - sudo apt-get update
   - sudo apt-get remove docker docker-engine docker.io
@@ -23,7 +32,7 @@ before_script:
   - uname -a
 script:
 # prepare qemu
-- docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
+- sudo ./build.sh -a "$ARCH" -v "$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT" -q "$QEMU_ARCH" -u "$QEMU_VER" -d "$IMAGE_NAME" -t "$TAG_ARCH"
 - docker images
 - docker inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
 - docker run --rm $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT /bin/sh -ec "echo Hello from sudermanjr!; set -x; uname -a; cat /etc/alpine-release"
