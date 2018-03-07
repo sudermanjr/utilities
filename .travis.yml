@@ -26,6 +26,7 @@ script:
 - docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
 - docker images
 - docker inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
+- docker run --rm $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT /bin/sh -ec "echo Hello from sudermanjr!; set -x; uname -a; cat /etc/alpine-release"
 #after_success:
 #- docker login -u="DOCKER_USERNAME" -p="DOCKER_PASSWORD"
 #- docker manifest create $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT \
