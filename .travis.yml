@@ -34,8 +34,6 @@ script:
 # prepare qemu
 - sudo ./build.sh -a "$ARCH" -v "$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT" -q "$QEMU_ARCH" -u "$QEMU_VER" -d "$IMAGE_NAME" -t "$TAG_ARCH"
 - docker images
-- docker inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
-- docker run --rm $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT /bin/sh -ec "echo Hello from sudermanjr!; set -x; uname -a; cat /etc/alpine-release"
 #after_success:
 #- docker login -u="DOCKER_USERNAME" -p="DOCKER_PASSWORD"
 #- docker manifest create $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT \
