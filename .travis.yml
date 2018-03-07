@@ -22,7 +22,7 @@ before_script:
   - uname -a
 script:
 # prepare qemu
-- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+- docker run --rm --privileged multiarch/qemu-user-static:register
 - docker build -t $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT .
 - docker images
 - docker inspect $IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
