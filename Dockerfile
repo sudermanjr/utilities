@@ -6,6 +6,7 @@ ENV VAULT_VERSION="0.9.5"
 RUN apk add --update \
   curl \
   postgresql-client \
+  ca-certificates \
   git \
   net-tools \
   nmap \
