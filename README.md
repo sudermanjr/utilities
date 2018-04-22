@@ -7,29 +7,28 @@
 Contains the following utilities:
 
 ### Custom Installs
-kubectl
-terraform
-vault
-kops
-helm
+* kubectl
+* vault
+* kops
+* helm
 
 ### APK Packages
-curl
-postgresql-client
-git
-net-tools
-nmap
-tcpdump
-iputils
-bind-tools
-mysql-client
-vim
-jq
-bash
-bash-completion
-iptables
-openssh-client
-openssl
+* curl
+* postgresql-client
+* git
+* net-tools
+* nmap
+* tcpdump
+* iputils
+* bind-tools
+* mysql-client
+* vim
+* jq
+* bash
+* bash-completion
+* iptables
+* openssh-client
+* openssl
 
 ## Kubernetes
 
