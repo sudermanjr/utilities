@@ -25,12 +25,12 @@ RUN apk add --update \
 # Install latest kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
       && chmod +x ./kubectl \
-      && mv ./kubectl /usr/local/bin/kubectl \
+      && mv ./kubectl /usr/local/bin/kubectl
 
 # Install latest kops
 RUN curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
     && chmod +x kops-linux-amd64 \
-    && mv kops-linux-amd64 /usr/local/bin/kops \
+    && mv kops-linux-amd64 /usr/local/bin/kops
 
 # Install latest helm
 RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh \
