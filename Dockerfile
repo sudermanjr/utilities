@@ -3,7 +3,7 @@ FROM alpine:latest
 ENV HOME=/
 ENV VAULT_VERSION="0.10.0"
 
-HEALTHCHECK None
+HEALTHCHECK NONE
 
 RUN apk add --update \
   curl \
