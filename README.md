@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sudermanjr/utilities.svg?branch=master)](https://travis-ci.org/sudermanjr/utilities)
+[![CircleCI](https://circleci.com/gh/sudermanjr/utilities/tree/master.svg?style=svg)](https://circleci.com/gh/sudermanjr/utilities/tree/master)
 
 # Utilities
 
