@@ -39,6 +39,8 @@ jobs:
           name: Run tests
           command: |
             ./run_tests.sh app:current
+      - store_test_results:
+          path: test-results
       - deploy:
           name: Push application Docker image
           command: |
