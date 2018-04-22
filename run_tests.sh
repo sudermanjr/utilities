@@ -2,8 +2,8 @@
 
 command_list=("kops version"
     "kubectl version --client"
-    "kops version"
-    "helm version --client")
+    "helm version --client"
+    "vault version")
 
 for ((i = 0; i < ${#command_list[@]}; i++))
 do
