@@ -39,8 +39,6 @@ jobs:
           name: Run tests
           command: |
             ./run_tests.sh app:current
-      - store_test_results:
-          path: test-results
       - store_artifacts:
           path: test-results
       - deploy:
