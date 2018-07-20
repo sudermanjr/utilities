@@ -24,7 +24,8 @@ RUN apk add --update \
   bash-completion \
   iptables \
   openssh-client \
-  openssl
+  openssl \
+  wget
 
 # Install pip modules
 RUN pip install kubernetes
@@ -40,9 +41,8 @@ RUN curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s http
     && mv kops-linux-amd64 /usr/local/bin/kops
 
 # Install latest helm
-RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh \
-    && chmod 700 get_helm.sh \
-    && ./get_helm.sh
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.10.0-rc.1-linux-amd64.tar.gz && tar -zxvf helm-v2.10.0-rc.1-linux-amd64.tar.gz
+RUN mv linux-amd64/helm /usr/local/bin/helm
 
 # Install vault (Specified version above)
 RUN curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
