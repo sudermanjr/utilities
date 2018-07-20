@@ -13,6 +13,7 @@ RUN apk add --update \
   net-tools \
   nmap \
   python \
+  py-pip \
   tcpdump \
   iputils \
   bind-tools \
@@ -24,6 +25,9 @@ RUN apk add --update \
   iptables \
   openssh-client \
   openssl
+
+# Install pip modules
+RUN pip install kubernetes
 
 # Install latest kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
