@@ -12,6 +12,7 @@ RUN apk add --update \
   git \
   net-tools \
   nmap \
+  python \
   tcpdump \
   iputils \
   bind-tools \
