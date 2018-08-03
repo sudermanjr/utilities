@@ -41,7 +41,7 @@ RUN curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s http
     && mv kops-linux-amd64 /usr/local/bin/kops
 
 # Install latest helm
-RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.10.0-rc.1-linux-amd64.tar.gz && tar -zxvf helm-v2.10.0-rc.1-linux-amd64.tar.gz
+RUN wget https://storage.googleapis.com/kubernetes-helm/helm-v2.10.0-rc.2-linux-amd64.tar.gz && tar -zxvf helm-v2.10.0-rc.2-linux-amd64.tar.gz
 RUN mv linux-amd64/helm /usr/local/bin/helm
 
 # Install vault (Specified version above)
