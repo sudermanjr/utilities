@@ -10,9 +10,11 @@ RUN apk add --update \
   postgresql-client \
   ca-certificates \
   git \
+  gcc \
   net-tools \
   nmap \
   python \
+  python3 \
   py-pip \
   tcpdump \
   iputils \
@@ -26,13 +28,15 @@ RUN apk add --update \
   openssh-client \
   openssl
 
+RUN pip install -U pip
+
 # Install pip modules
-RUN pip install kubernetes
+#RUN pip install kubernetes
 
 # Install latest kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
-      && chmod +x ./kubectl \
-      && mv ./kubectl /usr/local/bin/kubectl
+    && chmod +x ./kubectl \
+    && mv ./kubectl /usr/local/bin/kubectl
 
 # Install latest kops
 RUN curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64 \
@@ -46,7 +50,7 @@ RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > 
 
 # Install vault (Specified version above)
 RUN curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
-  && unzip vault_${VAULT_VERSION}_linux_amd64.zip \
-  && rm vault_${VAULT_VERSION}_linux_amd64.zip \
-  && chmod +x vault \
-  && mv vault /usr/local/bin/vault
+    && unzip vault_${VAULT_VERSION}_linux_amd64.zip \
+    && rm vault_${VAULT_VERSION}_linux_amd64.zip \
+    && chmod +x vault \
+    && mv vault /usr/local/bin/vault
