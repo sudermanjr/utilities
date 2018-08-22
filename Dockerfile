@@ -17,9 +17,7 @@ RUN apk add --update \
   nmap \
   openssl-dev \
   python \
-  python3 \
   python-dev \
-  python3-dev \
   py-pip \
   tcpdump \
   iputils \
@@ -34,7 +32,6 @@ RUN apk add --update \
   openssl
 
 RUN pip install -U pip
-RUN pip3 install -U pip
 
 # Install pip modules
 RUN pip install kubernetes
