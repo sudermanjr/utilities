@@ -23,6 +23,7 @@ RUN apk add --update \
   iputils \
   bind-tools \
   mysql-client \
+  netcat-openbsd \
   vim \
   jq \
   bash \
