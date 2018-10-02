@@ -25,9 +25,9 @@ jobs:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              TAG="sudermanjr/utilities:latest"
+              TAG="quay.io/sudermanjr/utilities:latest"
             else
-              TAG="sudermanjr/utilities:${CIRCLE_BRANCH}"
+              TAG="quay.io/sudermanjr/utilities:${CIRCLE_BRANCH}"
             fi
             echo "Pushing docker image: '$TAG'"
             echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin
