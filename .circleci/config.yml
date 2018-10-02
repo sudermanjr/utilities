@@ -30,6 +30,6 @@ jobs:
               TAG="quay.io/sudermanjr/utilities:${CIRCLE_BRANCH}"
             fi
             echo "Pushing docker image: '$TAG'"
-            echo $DOCKER_PASS | docker login --username $DOCKER_USER --password-stdin
+            echo $QUAY_TOKEN | docker login --username $QUAY_USER --password-stdin
             docker tag sudermanjr/utilities:build $TAG
             docker push $TAG
