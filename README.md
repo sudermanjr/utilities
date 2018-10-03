@@ -1,6 +1,4 @@
-[![CircleCI](https://circleci.com/gh/sudermanjr/utilities/tree/master.svg?style=svg)](https://circleci.com/gh/sudermanjr/utilities/tree/master)
-
-[![Docker Repository on Quay](https://quay.io/repository/sudermanjr/utilities/status "Docker Repository on Quay")](https://quay.io/repository/sudermanjr/utilities)
+[![CircleCI](https://circleci.com/gh/sudermanjr/utilities/tree/master.svg?style=svg)](https://circleci.com/gh/sudermanjr/utilities/tree/master) [![Docker Repository on Quay](https://quay.io/repository/sudermanjr/utilities/status "Docker Repository on Quay")](https://quay.io/repository/sudermanjr/utilities)
 
 # Utilities
 
