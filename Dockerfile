@@ -3,8 +3,6 @@ FROM alpine:latest
 ENV HOME=/
 ENV VAULT_VERSION="0.11.4"
 
-HEALTHCHECK NONE
-
 RUN apk add --update \
   curl \
   postgresql-client \
