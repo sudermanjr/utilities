@@ -33,7 +33,7 @@ RUN apk add --update \
 RUN pip install -U pip
 
 # Install pip modules
-RUN pip install kubernetes
+RUN pip install kubernetes pycodestyle pylint
 
 # Install latest kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
@@ -56,3 +56,8 @@ RUN curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT
   && rm vault_${VAULT_VERSION}_linux_amd64.zip \
   && chmod +x vault \
   && mv vault /usr/local/bin/vault
+
+# Install yq
+RUN curl -LO https://github.com/mikefarah/yq/releases/download/2.2.0/yq_linux_amd64 \
+  && mv yq_linux_amd64 /usr/local/bin/yq \
+  && chmod +x /usr/local/bin/yq
