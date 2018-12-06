@@ -61,3 +61,7 @@ RUN curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT
 RUN curl -LO https://github.com/mikefarah/yq/releases/download/2.2.0/yq_linux_amd64 \
   && mv yq_linux_amd64 /usr/local/bin/yq \
   && chmod +x /usr/local/bin/yq
+
+# Install Argo
+RUN curl -sSL -o /usr/local/bin/argo https://github.com/argoproj/argo/releases/download/v2.2.1/argo-linux-amd64 \
+  && chmod +x /usr/local/bin/argo
