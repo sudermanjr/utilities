@@ -28,7 +28,8 @@ RUN apk add --update \
   bash-completion \
   iptables \
   openssh-client \
-  openssl
+  openssl \
+  tree
 
 RUN pip install -U pip
 
