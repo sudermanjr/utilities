@@ -13,8 +13,6 @@ spec:
     metadata:
       labels:
         app: utilities
-      annotations:
-        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: utilities
@@ -24,6 +22,7 @@ spec:
         args: [ "while true; do sleep 30; done;" ]
         securityContext:
           readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
           runAsNonRoot: true
           runAsUser: 10324
           capabilities:
