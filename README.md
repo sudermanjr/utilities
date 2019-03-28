@@ -2,7 +2,7 @@
 
 # Utilities
 
-Contains the following utilities:
+Contains the following utilities that are the latest version at build time:
 
 ### Custom Installs
 * kubectl
@@ -28,6 +28,6 @@ Contains the following utilities:
 * openssh-client
 * openssl
 
-## Kubernetes
+## Kubernetes Deployment
 
 There is a simple pod definition yaml file that will add this to your kube cluster for diagnosing issues inside the cluster
