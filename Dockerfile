@@ -29,7 +29,8 @@ RUN apk add --update \
   iptables \
   openssh-client \
   openssl \
-  tree
+  tree \
+  docker
 
 RUN pip install -U pip
 
