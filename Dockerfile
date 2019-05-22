@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 ENV HOME=/
-ENV VAULT_VERSION="1.1.0"
+ENV VAULT_VERSION="1.1.2"
 
 RUN apk add --update \
   curl \
