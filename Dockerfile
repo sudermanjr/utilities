@@ -2,6 +2,7 @@ FROM alpine:latest
 
 ENV HOME=/
 ENV VAULT_VERSION="1.1.2"
+ENV TERRAFORM_VERSION="0.11.14"
 
 RUN apk add --update \
   curl \
@@ -67,3 +68,10 @@ RUN curl -LO https://github.com/mikefarah/yq/releases/download/2.2.0/yq_linux_am
 # Install Argo
 RUN curl -sSL -o /usr/local/bin/argo https://github.com/argoproj/argo/releases/download/v2.2.1/argo-linux-amd64 \
   && chmod +x /usr/local/bin/argo
+
+# Install Terraform
+RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+  && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+  && chmod +x terraform \
+  && mv terraform /usr/local/bin/terraform \
+  && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
