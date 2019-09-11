@@ -3,6 +3,7 @@ FROM alpine:latest
 ENV HOME=/
 ENV VAULT_VERSION="1.1.2"
 ENV TERRAFORM_VERSION="0.11.14"
+ENV RECKONER_VERSION="v2.0.0"
 
 RUN apk add --update \
   curl \
@@ -75,3 +76,8 @@ RUN curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terra
   && chmod +x terraform \
   && mv terraform /usr/local/bin/terraform \
   && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# Install Reckoner
+RUN curl -LO https://github.com/FairwindsOps/reckoner/releases/download/${RECKONER_VERSION}/reckoner-linux-amd64 \
+  && chmod +x reckoner-linux-amd64 \
+  && mv reckoner-linux-amd64 /usr/local/bin/reckoner
