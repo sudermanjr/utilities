@@ -13,36 +13,20 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
       python3 python3-pip python3-dev \
       git \
       jq \
+      kubectl \
       net-tools \
       mysql-client \
       netcat \
       nmap \
       postgresql-client \
+      terraform \
       tree \
       vim \
       wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-
 RUN pip3 install -U pip
 
 # Install pip modules
 RUN pip3 install kubernetes pycodestyle pylint yamllint awscli reckoner
-
-# Install latest ASDF
-RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf \
-        && cd ~/.asdf \
-        && git checkout "$(git describe --abbrev=0 --tags)"
-
-RUN echo ". $HOME/.asdf/asdf.sh" > ~/.bashrc
-
-COPY tool-versions /.tool-versions
-
-# Use Bash
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
-# Add Plugins
-RUN source ~/.bashrc; for plugin in $(cat /.tool-versions | awk '{print $1}'); do asdf plugin add $plugin; done
-
-ENTRYPOINT /bin/bash
