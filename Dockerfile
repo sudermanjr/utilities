@@ -16,13 +16,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
       python3 python3-pip python3-dev \
       git \
       jq \
-      kubectl \
       net-tools \
       mysql-client \
       netcat \
       nmap \
       postgresql-client \
-      terraform \
       tree \
       vim \
       wget \
