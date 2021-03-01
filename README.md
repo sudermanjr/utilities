@@ -1,29 +1,27 @@
 # Utilities
 
-Contains the following utilities that are the latest version at build time:
+Contains a lot of utilities that I use on a regular basis.
 
-### Custom Installs
-* kubectl
-* vault
-* kops
-* helm
+## ASDF
 
-### APK Packages
+There are several tools that are installed using [asdf](https://asdf-vm.com/#/). This enables you to easily install a different version at runtime if desired.
+
+See the [tool-versions](/tool-versions) for the default versions installed.
+
+## Other Packages
+
+See the [Dockerfile](/Dockerfile) for the full list of installed packages. Some are listed here:
+
 * curl
 * postgresql-client
 * git
 * net-tools
 * nmap
-* tcpdump
-* iputils
-* bind-tools
+* dnsutils
 * mysql-client
 * vim
 * jq
-* bash
-* bash-completion
 * iptables
-* openssh-client
 * openssl
 
 ## Kubernetes Deployment
