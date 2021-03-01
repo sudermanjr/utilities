@@ -46,4 +46,5 @@ RUN git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf && \
 
 ADD tool-versions $HOME/.tool-versions
 RUN for p in $(cat $HOME/.tool-versions | awk '{print $1}'); do asdf plugin add $p; done
-RUN asdf install
+
+RUN cd /tmp && asdf install
