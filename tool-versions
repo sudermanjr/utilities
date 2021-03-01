@@ -1,0 +1,14 @@
+argo 2.8.0
+helm 3.5.2
+k6 0.27.1
+kops v1.17.2
+kube-capacity 0.3.3
+kubectl 1.19.2
+linkerd 2.9.4
+nova 2.2.0
+pluto 3.5.2
+rbac-lookup 0.6.1
+shellcheck 0.7.0
+terraform 0.13.6
+vault 1.6.3
+yq 3.4.1
