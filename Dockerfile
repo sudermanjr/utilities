@@ -15,9 +15,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
       dnsutils \
       python3 python3-pip python3-dev \
       git \
+      iptables \
       jq \
-      net-tools \
+      libssl-dev \
       mysql-client \
+      net-tools \
       netcat \
       nmap \
       postgresql-client \
@@ -45,6 +47,4 @@ RUN git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf && \
     echo '. $HOME/.asdf/asdf.sh' >> $HOME/.profile
 
 ADD tool-versions $HOME/.tool-versions
-RUN for p in $(cat $HOME/.tool-versions | awk '{print $1}'); do asdf plugin add $p; done
-
-RUN cd /tmp && asdf install
+RUN cd /tmp && for p in $(cat $HOME/.tool-versions | awk '{print $1}') ; do asdf plugin add $p; asdf install $p; done
