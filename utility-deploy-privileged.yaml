@@ -26,6 +26,7 @@ spec:
           privileged: true
           allowPrivilegeEscalation: true
           runAsNonRoot: false
+          runAsUser: 0
         resources:
           requests:
             cpu: 30m
