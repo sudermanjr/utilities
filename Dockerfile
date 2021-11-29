@@ -5,9 +5,6 @@ ENV TMPDIR=/tmp
 ENV TZ=Etc/GMT
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-ENV VAULT_VERSION="1.6.3"
-ENV TERRAFORM_VERSION="0.13.6"
-
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y -qq \
