@@ -23,15 +23,15 @@ spec:
         securityContext:
           readOnlyRootFilesystem: true
           allowPrivilegeEscalation: false
-          runAsNonRoot: true
-          runAsUser: 10324
+          runAsNonRoot: false
+          runAsUser: 0
           capabilities:
             drop:
               - ALL
-        resources:
-          requests:
-            cpu: 30m
-            memory: 64Mi
-          limits:
-            cpu: 100m
-            memory: 128Mi
+        volumeMounts:
+        - mountPath: /etc/hosts
+          name: test-volume
+      volumes:
+      - name: test-volume
+        hostPath:
+          path: /srv/kubernetes/kubelet-server.key
